@@ -1,0 +1,23 @@
+<h2>Users</h2>
+<% if (user && (user.role==='admin')) { %>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Username</th>
+			<th>Role</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% users.forEach(p => { %>
+		<tr>
+			<td><%= p.id %></td>
+			<td><%= p.username %></td>
+			<td><%= p.role %></td>
+		</tr>
+		<% }) %>
+	</tbody>
+</table>
+<% } else { %>
+<h3>Anda tidak punya akses untuk halaman ini</h3>
+<% } %>

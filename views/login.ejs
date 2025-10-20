@@ -1,0 +1,23 @@
+<h2>Login</h2>
+<form method="post" action="/login">
+	<div class="mb-2">
+		<input
+			name="username"
+			placeholder="username"
+			class="form-control"
+			required
+		/>
+	</div>
+	<div class="mb-2">
+		<input
+			name="password"
+			type="password"
+			placeholder="password"
+			class="form-control"
+			required
+		/>
+	</div>
+	<button class="btn btn-primary">Login</button>
+</form>
+<p>Or login with Google:</p>
+<a class="btn btn-danger" href="/auth/google">Login with Google</a>

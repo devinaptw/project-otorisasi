@@ -1,0 +1,14 @@
+<h2>Create Order</h2>
+<form method="post" action="/orders">
+	<div class="mb-2">
+		<select name="productId" class="form-select">
+			<% products.forEach(p => { %>
+			<option value="<%= p.id %>"><%= p.name %> - Rp<%= p.price %></option>
+			<% }) %>
+		</select>
+	</div>
+	<div class="mb-2">
+		<input name="quantity" value="1" class="form-control" required />
+	</div>
+	<button class="btn btn-primary">Order</button>
+</form>

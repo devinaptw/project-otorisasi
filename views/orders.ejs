@@ -1,0 +1,52 @@
+<h2>Orders</h2>
+<a href="/orders/new" class="btn btn-sm btn-success mb-2">Create Order</a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Product</th>
+			<th>Customer</th>
+			<th>Seller</th>
+			<th>Qty</th>
+			<th>Status</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% orders.forEach(o => { %>
+		<tr>
+			<td><%= o.id %></td>
+			<td><%= products.find(p=>p.id===o.productId)?.name %></td>
+			<td><%= users.find(u=>u.id===o.customerId)?.username %></td>
+			<td><%= users.find(u=>u.id===o.sellerId)?.username %></td>
+			<td><%= o.quantity %></td>
+			<td><%= o.status %></td>
+			<td>
+				<% if (user && (user.role==='admin' || (user.role==='seller' &&
+				user.id===o.sellerId))) { %>
+				<form
+					method="post"
+					action="/orders/<%= o.id %>/status"
+					style="display: inline"
+				>
+					<select name="status">
+						<option>created</option>
+						<option>shipped</option>
+						<option>delivered</option>
+					</select>
+					<button class="btn btn-sm btn-primary">Update</button>
+				</form>
+				<% } %> <% if (user && user.role==='admin') { %>
+				<form
+					method="post"
+					action="/orders/<%= o.id %>/delete"
+					style="display: inline"
+				>
+					<button class="btn btn-sm btn-danger">Delete</button>
+				</form>
+				<% } %>
+			</td>
+		</tr>
+		<% }) %>
+	</tbody>
+</table>

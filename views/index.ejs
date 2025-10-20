@@ -1,0 +1,12 @@
+<h1>Welcome to Demo E-Commerce</h1>
+<p>Demo of RBAC + ABAC, JWT and Google OAuth.</p>
+<hr />
+<h3>Products</h3>
+<ul>
+	<% products.forEach(p => { %>
+	<li>
+		<strong><%= p.name %></strong> - Rp<%= p.price %> - owner: <%=
+		users.find(u=>u.id===p.ownerId)?.username %>
+	</li>
+	<% }) %>
+</ul>

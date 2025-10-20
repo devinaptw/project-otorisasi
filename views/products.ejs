@@ -1,0 +1,37 @@
+<h2>Products</h2>
+<% if (user && (user.role==='seller' || user.role==='admin')) { %>
+<a href="/products/new" class="btn btn-sm btn-success mb-2">Create Product</a>
+<% } %>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Owner</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% products.forEach(p => { %>
+		<tr>
+			<td><%= p.id %></td>
+			<td><%= p.name %></td>
+			<td>Rp<%= p.price %></td>
+			<td><%= users.find(u=>u.id===p.ownerId)?.username %></td>
+			<td>
+				<a class="btn btn-sm btn-primary" href="/products/<%= p.id %>/edit"
+					>Edit</a
+				>
+				<form
+					method="post"
+					action="/products/<%= p.id %>/delete"
+					style="display: inline"
+				>
+					<button class="btn btn-sm btn-danger">Delete</button>
+				</form>
+			</td>
+		</tr>
+		<% }) %>
+	</tbody>
+</table>

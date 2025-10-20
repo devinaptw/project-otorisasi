@@ -1,0 +1,25 @@
+<h2><%= product ? 'Edit' : 'Create' %> Product</h2>
+<form
+	method="post"
+	action="<%= product ? ('/products/' + product.id) : '/products' %>"
+>
+	<div class="mb-2">
+		<input
+			name="name"
+			value="<%= product?.name || '' %>"
+			placeholder="name"
+			class="form-control"
+			required
+		/>
+	</div>
+	<div class="mb-2">
+		<input
+			name="price"
+			value="<%= product?.price || '' %>"
+			placeholder="price"
+			class="form-control"
+			required
+		/>
+	</div>
+	<button class="btn btn-primary">Save</button>
+</form>
